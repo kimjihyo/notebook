@@ -1,0 +1,11 @@
+export const primary = '#673ab7';
+export const primaryLight = '#9a67ea';
+export const primaryDark = '#320b86';
+export const textPrimary = '#172b4d';
+export const textSecondary = '#42526e';
+export const textLight = '#5E6C84';
+export const white = '#ffffff';
+export const lightGray = '#f4f5f7';
+export const border = '#dfe1e6';
+export const grayHover = '#ebecf0';
+export const buttonHighlighted = '#42526E';

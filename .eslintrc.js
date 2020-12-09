@@ -12,5 +12,8 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['react'],
-  rules: {},
+  rules: {
+    'import/prefer-default-export': 'off',
+    'global-require': 'off',
+  },
 };

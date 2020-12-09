@@ -1,7 +1,8 @@
 import React from 'react';
+import { Home } from './containers';
 
 const App = () => (
-  <div>Hello world</div>
+  <Home />
 );
 
 export default App;
