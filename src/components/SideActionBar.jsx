@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { colors, sizes } from '../constants';
 import { ReactComponent as SearchIcon } from '../assets/search-24px.svg';
@@ -42,10 +43,10 @@ const BottomButtonsContainer = styled.div`
   padding-bottom: 20px;
 `;
 
-const SideActionBar = () => (
+const SideActionBar = ({ onSearchClick }) => (
   <Wrapper>
     <TopButtonsContainer>
-      <IconButton>
+      <IconButton onClick={onSearchClick}>
         <SearchIcon fill="white" width="30px" height="30px" />
       </IconButton>
       <IconButton>
@@ -59,5 +60,9 @@ const SideActionBar = () => (
     </BottomButtonsContainer>
   </Wrapper>
 );
+
+SideActionBar.propTypes = {
+  onSearchClick: PropTypes.func.isRequired,
+};
 
 export default SideActionBar;

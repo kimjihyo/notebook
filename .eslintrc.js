@@ -15,5 +15,6 @@ module.exports = {
   rules: {
     'import/prefer-default-export': 'off',
     'global-require': 'off',
+    'no-unused-vars': 'off',
   },
 };
