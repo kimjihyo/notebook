@@ -16,6 +16,7 @@ const HamburgerButton = styled.div`
   align-items: center;
   border-radius: 5px;
   &:hover {
+    cursor: pointer;
     background-color: #00000010;
   }
 `;
