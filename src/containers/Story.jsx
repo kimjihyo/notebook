@@ -35,8 +35,8 @@ const ActionRow = styled.div`
 `;
 
 const ActionButton = styled.div`
-  background-color: ${colors.lightGray};
-  color: ${colors.textSecondary};
+  background-color: ${(props) => (props.selected ? colors.buttonHighlighted : colors.lightGray)};
+  color: ${(props) => (props.selected ? colors.white : colors.textSecondary)};
   padding: 8px 13px;
   font-size: 14px;
   margin: 0px 2px;
@@ -77,7 +77,7 @@ const Story = () => {
       </TitleRow>
       <CreatedAt>Created at December 6th, 2020</CreatedAt>
       <ActionRow>
-        <ActionButton>
+        <ActionButton selected>
           View
         </ActionButton>
         <ActionButton>
