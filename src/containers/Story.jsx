@@ -63,7 +63,7 @@ const Story = () => {
   const [body, setBody] = React.useState('');
 
   React.useEffect(() => {
-    const htmlBody = marked(strings.dummyText);
+    const htmlBody = marked(strings.discoverARReadme);
     setBody(htmlBody);
   }, [setBody]);
 

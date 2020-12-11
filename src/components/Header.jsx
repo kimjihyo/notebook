@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { ReactComponent as HamburgerIcon } from '../assets/reorder-24px.svg';
 import { colors } from '../constants';
@@ -21,12 +22,16 @@ const HamburgerButton = styled.div`
   }
 `;
 
-const Header = () => (
+const Header = ({ onHamburgerButtonClick }) => (
   <Wrapper>
-    <HamburgerButton>
+    <HamburgerButton onClick={onHamburgerButtonClick}>
       <HamburgerIcon fill={colors.textSecondary} />
     </HamburgerButton>
   </Wrapper>
 );
+
+Header.propTypes = {
+  onHamburgerButtonClick: PropTypes.func.isRequired,
+};
 
 export default Header;

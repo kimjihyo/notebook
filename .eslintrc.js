@@ -16,5 +16,6 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'global-require': 'off',
     'no-unused-vars': 'off',
+    'no-tabs': 'off',
   },
 };
