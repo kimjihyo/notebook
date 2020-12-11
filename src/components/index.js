@@ -3,6 +3,7 @@ import SideNavigationBar from './SideNavigationBar';
 import Avatar from './Avatar';
 import Header from './Header';
 import SearchDrawer from './SearchDrawer';
+import CreateDrawer from './CreateDrawer';
 
 export {
   SideActionBar,
@@ -10,4 +11,5 @@ export {
   Avatar,
   Header,
   SearchDrawer,
+  CreateDrawer,
 };

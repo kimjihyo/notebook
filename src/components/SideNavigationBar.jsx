@@ -84,7 +84,7 @@ const SideNavigationBar = () => (
             <SubjectIcon fill={colors.textSecondary} />
           </Icon>
           <ButtonTitle>
-            Source
+            Jihyo
           </ButtonTitle>
         </Button>
         <Button>
@@ -92,7 +92,7 @@ const SideNavigationBar = () => (
             <DescriptionIcon fill={colors.textSecondary} />
           </Icon>
           <ButtonTitle>
-            Commits
+            Soyeon
           </ButtonTitle>
         </Button>
         <Button>
@@ -100,7 +100,7 @@ const SideNavigationBar = () => (
             <DescriptionIcon fill={colors.textSecondary} />
           </Icon>
           <ButtonTitle>
-            Branches
+            Canada
           </ButtonTitle>
         </Button>
         <Button>
@@ -108,7 +108,7 @@ const SideNavigationBar = () => (
             <DescriptionIcon fill={colors.textSecondary} />
           </Icon>
           <ButtonTitle>
-            Pull requests
+            Korea
           </ButtonTitle>
         </Button>
         <Button>
@@ -116,7 +116,7 @@ const SideNavigationBar = () => (
             <DescriptionIcon fill={colors.textSecondary} />
           </Icon>
           <ButtonTitle>
-            Pipelines
+            Friends
           </ButtonTitle>
         </Button>
         <Button>

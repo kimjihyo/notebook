@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import {
-  SideActionBar, SideNavigationBar, Header, SearchDrawer,
+  SideActionBar, SideNavigationBar, Header, SearchDrawer, CreateDrawer,
 } from '../components';
 import { sizes } from '../constants';
 import Story from './Story';
@@ -42,8 +42,9 @@ const Shadow = styled.div`
 const Home = () => {
   const [searchDrawerOpen, setSearchDrawerOpen] = React.useState(false);
   const [actionDrawerOpen, setActionDrawerOpen] = React.useState(false);
+  const [createDrawerOpen, setCreateDrawerOpen] = React.useState(false);
   const [width, setWidth] = React.useState(window.innerWidth);
-  const breakpoint = 800;
+  const breakpoint = 950;
 
   React.useEffect(() => {
     window.addEventListener('resize', () => { setWidth(window.innerWidth); });
@@ -53,16 +54,22 @@ const Home = () => {
     setSearchDrawerOpen(true);
   };
 
+  const onCreateClick = () => {
+    setCreateDrawerOpen(true);
+  };
+
+  const onHamburgetButtonClick = () => {
+    setActionDrawerOpen(true);
+  };
+
   const dismissDrawer = () => {
     if (searchDrawerOpen) {
       setSearchDrawerOpen(false);
     } else if (actionDrawerOpen) {
       setActionDrawerOpen(false);
+    } else if (createDrawerOpen) {
+      setCreateDrawerOpen(false);
     }
-  };
-
-  const onHamburgetButtonClick = () => {
-    setActionDrawerOpen(true);
   };
 
   return (
@@ -70,13 +77,16 @@ const Home = () => {
       {
         width > breakpoint ? (
           <>
-            <SideActionBar onSearchClick={onSearchClick} />
+            <SideActionBar onSearchClick={onSearchClick} onCreateClick={onCreateClick} />
             <SideNavigationBar />
           </>
         ) : <Header onHamburgerButtonClick={onHamburgetButtonClick} />
       }
       <Drawer priority={502} width={sizes.searchDrawerWidth} drawerOpen={searchDrawerOpen}>
         <SearchDrawer onBackClick={dismissDrawer} />
+      </Drawer>
+      <Drawer priority={502} width={sizes.createDrawerWidth} drawerOpen={createDrawerOpen}>
+        <CreateDrawer onBackClick={dismissDrawer} />
       </Drawer>
       <Drawer
         priority={501}
@@ -86,7 +96,10 @@ const Home = () => {
         <SideActionBar onSearchClick={onSearchClick} />
         <SideNavigationBar />
       </Drawer>
-      <Shadow drawerOpen={searchDrawerOpen || actionDrawerOpen} onClick={dismissDrawer} />
+      <Shadow
+        drawerOpen={actionDrawerOpen || searchDrawerOpen || createDrawerOpen}
+        onClick={dismissDrawer}
+      />
       <Content withSidebars={width > breakpoint}>
         <Story />
       </Content>

@@ -43,13 +43,13 @@ const BottomButtonsContainer = styled.div`
   padding-bottom: 20px;
 `;
 
-const SideActionBar = ({ onSearchClick }) => (
+const SideActionBar = ({ onSearchClick, onCreateClick }) => (
   <Wrapper>
     <TopButtonsContainer>
       <IconButton onClick={onSearchClick}>
         <SearchIcon fill="white" width="30px" height="30px" />
       </IconButton>
-      <IconButton>
+      <IconButton onClick={onCreateClick}>
         <AddIcon fill="white" width="32px" height="32px" />
       </IconButton>
     </TopButtonsContainer>
@@ -63,6 +63,7 @@ const SideActionBar = ({ onSearchClick }) => (
 
 SideActionBar.propTypes = {
   onSearchClick: PropTypes.func.isRequired,
+  onCreateClick: PropTypes.func.isRequired,
 };
 
 export default SideActionBar;
