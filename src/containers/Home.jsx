@@ -22,7 +22,7 @@ const Drawer = styled.div`
   width: ${(props) => `${props.width}px`};
   height: 100vh;
   position: fixed;
-  left: ${(props) => (props.drawerOpen ? '0px' : `-${sizes.searchDrawerWidth}px`)};
+  left: ${(props) => (props.drawerOpen ? '0px' : `-${props.width}px`)};
   top: 0px;
   z-index: ${(props) => props.priority};
   transition: left .2s;
