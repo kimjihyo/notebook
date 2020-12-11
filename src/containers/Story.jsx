@@ -2,9 +2,25 @@ import React from 'react';
 import styled from 'styled-components';
 import marked from 'marked';
 import { colors, strings } from '../constants';
+import { dummyStory } from '../dummy';
 
 const Container = styled.div`
   width: 100%;
+`;
+
+const Tag = styled.div`
+  background-color: ${(props) => props.backgroundColor};
+  color: ${colors.white};
+  font-weight: 500;
+  width: fit-content;
+  height: fit-content;
+  padding: 4px 6px;
+  font-size: 12px;
+  text-align: center;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  margin: 0px 3px;
 `;
 
 const Breadcrumbs = styled.div`
@@ -15,13 +31,14 @@ const Breadcrumbs = styled.div`
 const TitleRow = styled.div`
   display: flex;
   padding: 12px 0px;
+  align-items: center;
 `;
 
 const Title = styled.div`
   font-size: 24px;
   font-weight: 500;
   color: ${colors.textPrimary};
-  margin-right: 8px;
+  margin-right: 12px;
 `;
 
 const CreatedAt = styled.div`
@@ -60,12 +77,7 @@ const Body = styled.div`
 `;
 
 const Story = () => {
-  const [body, setBody] = React.useState('');
-
-  React.useEffect(() => {
-    const htmlBody = marked(strings.discoverARReadme);
-    setBody(htmlBody);
-  }, [setBody]);
+  const [story] = React.useState(dummyStory);
 
   return (
     <Container>
@@ -73,9 +85,16 @@ const Story = () => {
         Ji-Hyo Kim / Notebook / Stories
       </Breadcrumbs>
       <TitleRow>
-        <Title>Notebook</Title>
+        <Title>{story.title}</Title>
+        {
+          story.tags.map((tag) => <Tag backgroundColor={tag.backgroundColor}>{tag.name}</Tag>)
+        }
       </TitleRow>
-      <CreatedAt>Created at December 6th, 2020</CreatedAt>
+      <CreatedAt>
+        Created at
+        {' '}
+        {story.createdAt}
+      </CreatedAt>
       <ActionRow>
         <ActionButton selected>
           View
@@ -87,7 +106,7 @@ const Story = () => {
           Delete
         </ActionButton>
       </ActionRow>
-      <Body dangerouslySetInnerHTML={{ __html: body }} />
+      <Body dangerouslySetInnerHTML={{ __html: marked(story.body) }} />
     </Container>
   );
 };
