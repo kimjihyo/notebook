@@ -14,7 +14,7 @@ const Container = styled.div`
 const Content = styled.div`
   flex: 1;
   padding: 40px;
-  margin-left: ${(props) => (props.withSidebars ? `${sizes.sideActionBarWidth + sizes.sideNavigationBarWidth}px` : '0px')};
+  margin-left: ${(props) => (props.withSidebars ? `${sizes.sideActionBarWidth + sizes.sideNavigationBarWidth}px ` : '0px')};
 `;
 
 const Drawer = styled.div`
@@ -22,10 +22,10 @@ const Drawer = styled.div`
   width: ${(props) => `${props.width}px`};
   height: 100vh;
   position: fixed;
-  left: ${(props) => (props.drawerOpen ? '0px' : `-${props.width}px`)};
+  left: ${(props) => (props.drawerOpen ? '0px' : `-${props.width + 50}px`)};
   top: 0px;
   z-index: ${(props) => props.priority};
-  transition: left .2s;
+  transition: left .3s;
 `;
 
 const Shadow = styled.div`
