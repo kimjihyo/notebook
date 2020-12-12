@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import marked from 'marked';
+import PropTypes from 'prop-types';
 import { colors, strings } from '../constants';
 import { dummyStory } from '../dummy';
 
@@ -76,7 +77,7 @@ const Body = styled.div`
   line-height: 1.5;
 `;
 
-const Story = () => {
+const Story = ({ onViewClick, onEditClick, onDeleteClick }) => {
   const [story] = React.useState(dummyStory);
 
   return (
@@ -96,19 +97,25 @@ const Story = () => {
         {story.createdAt}
       </CreatedAt>
       <ActionRow>
-        <ActionButton selected>
+        <ActionButton selected onClick={onViewClick}>
           View
         </ActionButton>
-        <ActionButton>
+        <ActionButton onClick={onEditClick}>
           Edit
         </ActionButton>
-        <ActionButton>
+        <ActionButton onClick={onDeleteClick}>
           Delete
         </ActionButton>
       </ActionRow>
       <Body dangerouslySetInnerHTML={{ __html: marked(story.body) }} />
     </Container>
   );
+};
+
+Story.propTypes = {
+  onViewClick: PropTypes.func.isRequired,
+  onEditClick: PropTypes.func.isRequired,
+  onDeleteClick: PropTypes.func.isRequired,
 };
 
 export default Story;

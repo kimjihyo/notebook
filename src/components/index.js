@@ -4,6 +4,7 @@ import Avatar from './Avatar';
 import Header from './Header';
 import SearchDrawer from './SearchDrawer';
 import CreateDrawer from './CreateDrawer';
+import RichTextEditor from './RichTextEditor';
 
 export {
   SideActionBar,
@@ -12,4 +13,5 @@ export {
   Header,
   SearchDrawer,
   CreateDrawer,
+  RichTextEditor,
 };

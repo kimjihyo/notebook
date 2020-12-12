@@ -4,6 +4,7 @@ import {
   SideActionBar, SideNavigationBar, Header, SearchDrawer, CreateDrawer,
 } from '../components';
 import { sizes } from '../constants';
+import EditStory from './EditStory';
 import Story from './Story';
 
 const Container = styled.div`
@@ -40,9 +41,13 @@ const Shadow = styled.div`
 `;
 
 const Home = () => {
+  const VIEW = 0;
+  const EDIT = 1;
+
   const [searchDrawerOpen, setSearchDrawerOpen] = React.useState(false);
   const [actionDrawerOpen, setActionDrawerOpen] = React.useState(false);
   const [createDrawerOpen, setCreateDrawerOpen] = React.useState(false);
+  const [mode, setMode] = React.useState(EDIT);
   const [width, setWidth] = React.useState(window.innerWidth);
   const breakpoint = 950;
 
@@ -60,6 +65,18 @@ const Home = () => {
 
   const onHamburgetButtonClick = () => {
     setActionDrawerOpen(true);
+  };
+
+  const onViewClick = () => {
+    setMode(VIEW);
+  };
+
+  const onEditClick = () => {
+    setMode(EDIT);
+  };
+
+  const onDeleteClick = () => {
+
   };
 
   const dismissDrawer = () => {
@@ -101,7 +118,20 @@ const Home = () => {
         onClick={dismissDrawer}
       />
       <Content withSidebars={width > breakpoint}>
-        <Story />
+        {mode === VIEW && (
+          <Story
+            onViewClick={onViewClick}
+            onEditClick={onEditClick}
+            onDeleteClick={onDeleteClick}
+          />
+        )}
+        {mode === EDIT && (
+        <EditStory
+          onViewClick={onViewClick}
+          onEditClick={onEditClick}
+          onDeleteClick={onDeleteClick}
+        />
+        )}
       </Content>
     </Container>
   );
