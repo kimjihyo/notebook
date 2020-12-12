@@ -91,6 +91,40 @@ const TextInput = styled.input`
   width: 100%;
 `;
 
+const BottomButtonContainer = styled.div`
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 12px;
+  margin-right: 12px;
+`;
+
+const SaveButton = styled.div`
+  padding: 8px 16px;
+  color: white;
+  background-color: #0052CC;
+  font-weight: 400;
+  font-size: 14px;
+  border-radius: 3px;
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+const CancelButton = styled.div`
+  margin-left: 6px;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 5px 10px;
+  color: #0052CC;
+
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+`;
+
 const EditStory = ({ onViewClick, onEditClick, onDeleteClick }) => (
   <Container>
     <Breadcrumbs>
@@ -131,6 +165,14 @@ const EditStory = ({ onViewClick, onEditClick, onDeleteClick }) => (
         <TextInput type="text" placeholder="Add an optional message" />
       </FieldGroup>
     </Editor>
+    <BottomButtonContainer>
+      <SaveButton>
+        Save
+      </SaveButton>
+      <CancelButton>
+        Cancel
+      </CancelButton>
+    </BottomButtonContainer>
   </Container>
 );
 

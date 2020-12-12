@@ -28,6 +28,7 @@ const CustomTextArea = styled.textarea`
   background-color: transparent;
   outline: 0;
   resize: none;
+  font-family: Consolas,Menlo,"Liberation Mono",Courier,monospace;
 `;
 
 const RichTextEditor = () => (
