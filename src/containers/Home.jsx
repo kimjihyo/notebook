@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import marked from 'marked';
 import {
   SideActionBar, SideNavigationBar, Header, SearchDrawer, CreateDrawer,
 } from '../components';
 import { sizes } from '../constants';
+import { dummyStory } from '../dummy';
 import EditStory from './EditStory';
 import Story from './Story';
 
@@ -44,10 +46,11 @@ const Home = () => {
   const VIEW = 0;
   const EDIT = 1;
 
+  const [story] = React.useState(dummyStory);
   const [searchDrawerOpen, setSearchDrawerOpen] = React.useState(false);
   const [actionDrawerOpen, setActionDrawerOpen] = React.useState(false);
   const [createDrawerOpen, setCreateDrawerOpen] = React.useState(false);
-  const [mode, setMode] = React.useState(EDIT);
+  const [mode, setMode] = React.useState(VIEW);
   const [width, setWidth] = React.useState(window.innerWidth);
   const breakpoint = 950;
 
@@ -123,6 +126,7 @@ const Home = () => {
             onViewClick={onViewClick}
             onEditClick={onEditClick}
             onDeleteClick={onDeleteClick}
+            story={story}
           />
         )}
         {mode === EDIT && (
@@ -130,6 +134,7 @@ const Home = () => {
           onViewClick={onViewClick}
           onEditClick={onEditClick}
           onDeleteClick={onDeleteClick}
+          story={story}
         />
         )}
       </Content>

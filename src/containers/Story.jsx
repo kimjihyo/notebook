@@ -2,8 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import marked from 'marked';
 import PropTypes from 'prop-types';
-import { colors, strings } from '../constants';
-import { dummyStory } from '../dummy';
+import { colors } from '../constants';
 
 const Container = styled.div`
   width: 100%;
@@ -77,45 +76,44 @@ const Body = styled.div`
   line-height: 1.5;
 `;
 
-const Story = ({ onViewClick, onEditClick, onDeleteClick }) => {
-  const [story] = React.useState(dummyStory);
-
-  return (
-    <Container>
-      <Breadcrumbs>
-        Ji-Hyo Kim / Notebook / Stories
-      </Breadcrumbs>
-      <TitleRow>
-        <Title>{story.title}</Title>
-        {
+const Story = ({
+  onViewClick, onEditClick, onDeleteClick, story,
+}) => (
+  <Container>
+    <Breadcrumbs>
+      Ji-Hyo Kim / Notebook / Stories
+    </Breadcrumbs>
+    <TitleRow>
+      <Title>{story.title}</Title>
+      {
           story.tags.map((tag) => <Tag backgroundColor={tag.backgroundColor}>{tag.name}</Tag>)
         }
-      </TitleRow>
-      <CreatedAt>
-        Created at
-        {' '}
-        {story.createdAt}
-      </CreatedAt>
-      <ActionRow>
-        <ActionButton selected onClick={onViewClick}>
-          View
-        </ActionButton>
-        <ActionButton onClick={onEditClick}>
-          Edit
-        </ActionButton>
-        <ActionButton onClick={onDeleteClick}>
-          Delete
-        </ActionButton>
-      </ActionRow>
-      <Body dangerouslySetInnerHTML={{ __html: marked(story.body) }} />
-    </Container>
-  );
-};
+    </TitleRow>
+    <CreatedAt>
+      Created at
+      {' '}
+      {story.createdAt}
+    </CreatedAt>
+    <ActionRow>
+      <ActionButton selected onClick={onViewClick}>
+        View
+      </ActionButton>
+      <ActionButton onClick={onEditClick}>
+        Edit
+      </ActionButton>
+      <ActionButton onClick={onDeleteClick}>
+        Delete
+      </ActionButton>
+    </ActionRow>
+    <Body dangerouslySetInnerHTML={{ __html: marked(story.body) }} />
+  </Container>
+);
 
 Story.propTypes = {
   onViewClick: PropTypes.func.isRequired,
   onEditClick: PropTypes.func.isRequired,
   onDeleteClick: PropTypes.func.isRequired,
+  story: PropTypes.objectOf(PropTypes.object).isRequired,
 };
 
 export default Story;

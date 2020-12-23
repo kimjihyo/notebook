@@ -1,3 +1,8 @@
+export const shortString = `
+Hello world!<br>
+My name is Jihyo Kim.
+`;
+
 export const markedDescription = `
 # Marked
 

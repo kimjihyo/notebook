@@ -125,20 +125,22 @@ const CancelButton = styled.div`
   }
 `;
 
-const EditStory = ({ onViewClick, onEditClick, onDeleteClick }) => (
+const EditStory = ({
+  onViewClick, onEditClick, onDeleteClick, story,
+}) => (
   <Container>
     <Breadcrumbs>
       Ji-Hyo Kim / Notebook / Stories
     </Breadcrumbs>
     <TitleRow>
       <Title>
-        Discover AR
+        {story.title}
       </Title>
     </TitleRow>
     <CreatedAt>
       Created at
       {' '}
-      December 6th, 2020
+      {story.createdAt}
     </CreatedAt>
     <ActionRow>
       <ActionButton onClick={onViewClick}>
@@ -154,11 +156,11 @@ const EditStory = ({ onViewClick, onEditClick, onDeleteClick }) => (
     <Editor>
       <FieldGroup cetner>
         <FieldLabel>Title</FieldLabel>
-        <TextInput type="text" />
+        <TextInput type="text" value={story.title} />
       </FieldGroup>
       <FieldGroup>
         <FieldLabel style={{ marginTop: '6px' }}>Content</FieldLabel>
-        <RichTextEditor />
+        <RichTextEditor value={story.body} />
       </FieldGroup>
       <FieldGroup center>
         <FieldLabel>Commit message</FieldLabel>
@@ -169,7 +171,7 @@ const EditStory = ({ onViewClick, onEditClick, onDeleteClick }) => (
       <SaveButton>
         Save
       </SaveButton>
-      <CancelButton>
+      <CancelButton onClick={onViewClick}>
         Cancel
       </CancelButton>
     </BottomButtonContainer>
@@ -180,6 +182,7 @@ EditStory.propTypes = {
   onViewClick: PropTypes.func.isRequired,
   onEditClick: PropTypes.func.isRequired,
   onDeleteClick: PropTypes.func.isRequired,
+  story: PropTypes.objectOf(PropTypes.object).isRequired,
 };
 
 export default EditStory;

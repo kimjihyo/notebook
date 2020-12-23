@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { colors } from '../constants';
 
 const Wrapper = styled.div`
@@ -31,10 +32,14 @@ const CustomTextArea = styled.textarea`
   font-family: Consolas,Menlo,"Liberation Mono",Courier,monospace;
 `;
 
-const RichTextEditor = () => (
+const RichTextEditor = ({ value }) => (
   <Wrapper>
-    <CustomTextArea />
+    <CustomTextArea value={value} />
   </Wrapper>
 );
+
+RichTextEditor.propTypes = {
+  value: PropTypes.string.isRequired,
+};
 
 export default RichTextEditor;
